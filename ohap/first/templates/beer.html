@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beer</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/beer.css' %}">
+    <style>
+        img { display: block; margin: 0px auto; }
+    </style>
+</head>
+<body>
+    <div class="beer_info">
+        <div class="login">
+            {%if user.is_authenticated%}
+                {{user.username}}님이 접속하셨습니다.
+                <a href="{%url 'logout' %}">로그아웃</a>
+            {%else%}
+            <a href="{%url 'sign_up'%}">회원가입</a> 
+            <a href="{%url 'login'%}">로그인</a>
+            {%endif%}
+            <a href=" {%url 'index'%}">
+            </div>
+            <header>
+                <h3> PU </h3>
+                <h3> NB </h3>
+            </header>    
+            </a>
+
+        {% for i in mybeer %}
+        <div class="beers">
+            {{i.pubname}}<br>
+        </div>
+        <div class="beers">
+            {{i.beername}}<br>
+        </div>
+        <img class="beerimg" src="{{i.beerimage.url}}">
+        
+        <form method="POST" action="{% url 'like' i.id mymenu_id %}">
+            {% csrf_token %}
+        <input type="submit" value="❤" class="likebutton"> 
+            {{i.likes.count}}
+        </form>
+        
+        <div class="beers">
+            {{i.taste}}<br>
+        </div>
+        <div class="beers">
+            {{i.price}}<br>
+        </div>
+        <div class="beers">
+            {{i.alcohol}}<br>
+        </div>
+        <div class="beers">
+            {{i.information}}<br>
+        </div>
+    </div>
+
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pub</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pub.css' %}">
+</head>
+<body>
+    <div class = "wrapper">
+        <div class="login">
+            {%if user.is_authenticated%}
+                {{user.username}}님이 접속하셨습니다.
+                <a href="{%url 'logout' %}">로그아웃</a>
+            {%else%}
+            <a href="{%url 'sign_up'%}">회원가입</a> 
+            <a href="{%url 'login'%}">로그인</a>
+            {%endif%}
+            <a href=" {%url 'index'%}">
+            </div>
+            <header>
+                <h3> PU <h3>
+                <h3> NB </h3>
+            </header>
+            </a>
+    
+        {% for mymenu in mypub.menulist_set.all %}
+        <a href="{% url 'beer' mymenu.id %}">
+            <div class="menu_list">
+                <p>{{mymenu.body}}</p>
+                <hr>
+            </div>
+        </a>
+        {% endfor %}
+        <div class = "comment">
+            <hr>
+            <form method="post" action="{% url 'create_comment' mypub.id %}">
+                {%csrf_token%}
+                {%for i in comment_form%}
+                        {%if i.label != 'Post' %}
+                        댓글: {{i}}
+                        {%endif%}
+                {%endfor%}
+                <input type="hidden" name="post" value={{mypub.id}}>
+                <button type="submit">저장</button>
+            </form>
+            <hr>
+            {% for i in mypub.comment_set.all %}
+            <p>{{i.author}}: {{i}} <a href="{% url 'delete_comment' i.id mypub.id %}">삭제</a></p>
+            <div class = recomment>
+            <form method="post" action="{% url 'create_recomment' mypub.id %}">
+                {%csrf_token%}
+                {%for recom_form in recomment_form%}
+                    {%if recom_form.label != 'Comment' %}
+                        {%if recom_form.label == '대댓글' %}
+                        +대댓글 {{recom_form}}
+                        {%endif%}
+                    {%endif%}
+                {%endfor%}
+                <input type="hidden" name="comment" value={{i.id}}>
+                <button type="submit">저장</button>
+            </form>
+            {%for recom in i.recomment_set.all%}
+            +{{recom.author}}: {{recom}}
+            <a href="{% url 'delete_recomment' recom.id mypub.id %}">삭제</a><br>
+            {%endfor%}
+            </div>
+        <hr>
+        {%endfor%}
+        </div>
+    </div>
+</body>
+</html>

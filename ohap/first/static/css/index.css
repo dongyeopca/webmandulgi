@@ -1,0 +1,96 @@
+body{
+    margin:0;
+    padding:0;
+    
+    }
+.container{
+    margin:0;
+    padding:0;
+    height:100vh;
+    max-width: 1980px;
+}
+
+.top-page>h3 {
+    display: inline-block;
+    padding:30px;
+    color: orange;
+    font-size: 50px;
+    text-shadow: 2px 2px 2px grey;
+}
+.top-page{
+    background-image: url("../images/CheerBeer.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+}
+
+.login{
+    float:right;
+    margin-top: 20px;
+    margin-right: 20px;
+
+}
+
+
+.hello {
+    margin-top: 100px;
+    display: flex;
+    justify-content:center;
+    font-size: 40px;
+}
+.service{
+    color: orange;
+    line-height: 1.5;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+   
+}
+li{
+    list-style-type: none;
+}
+
+.service-name{
+    margin-top: 0;
+    overflow: hidden;
+    display:inline-block;
+    vertical-align: top;
+    height: 1.5em;
+}
+.service-list  {
+    animation-name: rolling;  
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+
+   
+    
+}
+@keyframes rolling {
+    0% {
+        transform: translateY(0);
+    }
+    33.3% {
+        transform: translateY(-25%);
+    }
+    66.6% {
+        transform: translateY(-50%);
+    }
+    100%{
+        transform: translateY(-75%);
+    }
+}
+.pub_list{
+    width: 80vw;
+    padding:30px;
+    display:flex;
+    margin-left:10%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+
+
+}
+.card{
+    margin-top: 15px;
+}

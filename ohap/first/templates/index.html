@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= device-width", initial-scale="1.0">
+    <title> PNUB </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(function() {
+                $( "#some_flag" ).dialog({
+                    modal: true,
+                    closeOnEscape: false,
+                    dialogClass: "no-close",
+                    resizable: false,
+                    draggable: false,
+                    width: 600,
+                    buttons: [
+                        {
+                            text: "OK",
+                            click: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class = "container">
+        {% if login_flag %}
+        <div id="login_flag" title="Login Flag">
+            <p>로그인이 필요한 기능입니다</p>
+         </div>
+        {% endif %}
+        <div class="top-page">
+        <div class="login">
+        {%if user.is_authenticated%}
+            {{user.username}}님이 접속하셨습니다.
+            <a href="{%url 'logout' %}"><button type="button" class="btn btn-light">로그아웃</button>
+                </a>
+        {%else%}
+        <a href="{%url 'login'%}"><button type="button" class="btn btn-light">로그인</button>
+        </a>
+        <a href="{%url 'sign_up'%}"><button type="button" class="btn btn-light">회원가입</button>
+        </a> 
+        
+        {%endif%}
+        </div>
+            <h3> PU <br> NB </h3>
+            <h5 class='hello'>Welcome to our service</h5>
+            <div class="service">
+                we provide <div class="service-name">
+
+                    <ul class="service-list">
+                        <li>Pub list</li>
+                        <li>Menu list</li>
+                        <li>Menu detail</li>
+                        <li>Pub list</li>
+                    </ul>
+                </div>
+            </div>
+
+    </div>
+
+
+        <div class=pub_list>
+        {% for mypub in a %}
+        <a href="{% url 'pub' mypub.id %}">
+            <div class="card" style="width: 18rem;">
+                <img src="{{mypub.images.url}}" class="card-img-top" alt="이미지">
+                <div class="card-body">
+                  <h5 class="card-title">{{mypub.title}}</h5>
+                  <p class="card-text">{{mypub.number}}</p>
+                  <a href="{% url 'pub' mypub.id %}" class="btn btn-primary">Go Menulist</a>
+                </div>
+              </div>
+
+            
+        </a>
+        {% endfor %}
+        </div>
+    
+    </div>
+    
+</body>
+</html>

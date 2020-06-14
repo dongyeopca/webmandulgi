@@ -12,6 +12,9 @@ def index(request):
 def pub(request, mypub_id):
     mypub = get_object_or_404(Publist,pk=mypub_id)
     menu = Menulist.objects.filter(Publist=mypub)
+    
+    
+ 
     #댓글
     mycom_form = CommentForm()
     myrecom_form = ReCommentForm()
@@ -21,6 +24,7 @@ def pub(request, mypub_id):
 def beer(request, mymenu_id):
     mymenu = get_object_or_404(Menulist,pk=mymenu_id)
     mybeer = Menudetail.objects.filter(menulist=mymenu)
+    
     # ilike = Menudetail.likes
     mymenu_id = mymenu_id
     context ={'mymenu':mymenu,'mybeer':mybeer,'mymenu_id':mymenu_id}

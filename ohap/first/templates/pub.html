@@ -8,31 +8,35 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/pub.css' %}">
 </head>
 <body>
-    <div class = "wrapper">
+    <div class = "container">
+        <div class="top">
         <div class="login">
             {%if user.is_authenticated%}
                 {{user.username}}님이 접속하셨습니다.
                 <a href="{%url 'logout' %}">로그아웃</a>
-            {%else%}
-            <a href="{%url 'sign_up'%}">회원가입</a> 
+            {%else%} 
             <a href="{%url 'login'%}">로그인</a>
             {%endif%}
-            <a href=" {%url 'index'%}">
+            
             </div>
-            <header>
-                <h3> PU <h3>
-                <h3> NB </h3>
-            </header>
-            </a>
-    
+            <a href=" {%url 'index'%}">
+                <h3> PU <br> NB </h3>
+           </a>
+           <h3 class="menu">MENU</h3>
+        </div>
+           
+        <div class="list-box">
         {% for mymenu in mypub.menulist_set.all %}
         <a href="{% url 'beer' mymenu.id %}">
             <div class="menu_list">
+                {% for mybeer in mypub.menudetail_set.all %}
+                <img class="image" src="{{mybeer.beerimage.url}}">
+                {% endfor %}
                 <p>{{mymenu.body}}</p>
-                <hr>
             </div>
         </a>
         {% endfor %}
+        </div>
         <div class = "comment">
             <hr>
             <form method="post" action="{% url 'create_comment' mypub.id %}">

@@ -70,9 +70,12 @@
 
         <div class=pub_list>
         {% for mypub in a %}
+        
         <a href="{% url 'pub' mypub.id %}">
             <div class="card" style="width: 18rem;">
-                <img src="{{mypub.images.url}}" class="card-img-top" alt="이미지">
+                {% if mypub.image %}
+                <img class="image" src="{{mypub.image.url}}" class="card-img-top"  alt="이미지">
+                {% endif %}
                 <div class="card-body">
                   <h5 class="card-title">{{mypub.title}}</h5>
                   <p class="card-text">{{mypub.number}}</p>

@@ -1,63 +1,65 @@
 body{
-    display: block;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
-
-.login{
-    font-size: 12px;
-    padding-right: 15px;
-    text-align: right;
-
-}
-.wrapper{
-    text-decoration: none;
-    margin: 10px;
-    background-color: rgb(250, 250, 250);
-    border-radius: 10px;
-    max-width: 300px;
-}
-
-h3{
-    margin-bottom: 0px;
-}
-header {
-    padding-top: 1px;
-    padding-left: 10px;
-    padding-right: 50px;
-    padding-bottom: 80px;
+.top>a>h3 {
+    display: inline-block;
+    padding:30px;
     color: orange;
-    line-height: 1px;
-    font-size: 30px;
-    text-shadow: 2px 2px 2px gray; 
-    background-image: url('../images/CheerBeer.jpg');
-    border-radius: 10px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    margin: 10px;
+    font-size: 50px;
+    text-shadow: 2px 2px 2px grey;
+    margin-bottom: 0;
+    margin-top: 0;
 }
+.menu {
+    color:orange;
+    font-size: 40px;
+    margin:0;
+    margin-left:14%;
+}
+.login{
+    float:right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.container {
+    margin: 0;
+    padding:0;
+    max-width: 1980px;
+    background-image: url("../images/galmegi.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+
 
 a{
     text-decoration: none;
 }
 
+.list-box{width: 80vw;
+    padding:30px;
+    display:flex;
+    margin-left:10%;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    
+    
+}
 .menu_list{
-    margin: 10px;
-    padding-top: 3px;
-    font-size: 12px;
-    text-align: center; 
-    letter-spacing: 1px;
-    border-radius: 10px;
-    background-color:rgb(240, 240, 240);
-    color:rgb(30, 30, 30);
-    margin: 10px;
-    background-position: center;
-    letter-spacing: 1px;
+    
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    border: 1px solid black;
+    margin-top:10px;
+    margin:30px;
+    text-align: center;
 }
 
-hr{
-    border-width: 0px;
+a{
+    text-decoration: none;
 }
 
 .comment{
